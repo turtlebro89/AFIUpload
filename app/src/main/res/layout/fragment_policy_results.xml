@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="41dp"
         android:text="Please tap on a policy below to proceed:"
-        android:id="@+id/textView6"
+        android:id="@+id/instructions"
         android:layout_gravity="center_horizontal"
         android:gravity="bottom"
         android:paddingBottom="10dp" />

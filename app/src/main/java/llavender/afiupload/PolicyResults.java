@@ -41,8 +41,11 @@ public class PolicyResults extends Fragment {
 
         //Wire up the widgets
         TextView policyFoundText = (TextView) view.findViewById(R.id.policyFoundView);
+        TextView instructions = (TextView) view.findViewById(R.id.instructions);
         ListView policyListView = (ListView) view.findViewById(R.id.listOfPolicies);
         policies = Holder.getPolicies();
+
+        instructions.setText("Tap the policy you would like to upload photo's for");
 
         //set the text for # of policies found
         policyFoundText.setText(policies.size() + "policie(s) found");

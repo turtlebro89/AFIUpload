@@ -7,7 +7,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 
 /**
- * Donfirm delete Alert dialog
+ * Confirm delete Alert dialog
  */
 public class ConfirmDeleteDialogFragment extends DialogFragment {
 

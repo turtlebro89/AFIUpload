@@ -17,13 +17,14 @@
             android:text="First Name"
             android:id="@+id/textView2" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/firstNameView"
-            android:layout_gravity="center_horizontal"
-            android:singleLine="true"/>
     </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/firstNameView"
+        android:singleLine="true"
+        android:inputType="text" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -38,13 +39,13 @@
             android:id="@+id/textView"
             />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/lastNameView"
-            android:layout_gravity="center_horizontal"
-            android:singleLine="true"/>
     </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lastNameView"
+        android:singleLine="true"/>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -58,13 +59,13 @@
             android:text="City"
             android:id="@+id/textView3" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/cityView"
-            android:layout_gravity="center_horizontal"
-            android:singleLine="true"/>
     </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cityView"
+        android:singleLine="true"/>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -97,13 +98,13 @@
             android:text="Zip Code"
             android:id="@+id/textView4" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/zipCodeView"
-            android:layout_gravity="center_horizontal"
-            android:singleLine="true"/>
     </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/zipCodeView"
+        android:singleLine="true"/>
 
     <Button
         android:layout_width="match_parent"
