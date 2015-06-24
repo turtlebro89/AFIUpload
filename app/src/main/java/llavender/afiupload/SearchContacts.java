@@ -35,7 +35,7 @@ public class SearchContacts extends Fragment {
     private EditText cityView;
     private EditText zipCode;
     private Spinner stateSpinner;
-    private ArrayList clientList;
+    private ArrayList<ParseObject> clientList;
     ContactResults results;
 
     public SearchContacts() {
@@ -54,7 +54,7 @@ public class SearchContacts extends Fragment {
         zipCode = (EditText) view.findViewById(R.id.zipCodeView);
         stateSpinner = (Spinner) view.findViewById(R.id.stateSpinner);
         Button searchButton = (Button) view.findViewById(R.id.searchBtn);
-        clientList = new ArrayList();
+        clientList = new ArrayList<>();
         results = new ContactResults();
 
                 //create the spinner adapter
@@ -100,8 +100,7 @@ public class SearchContacts extends Fragment {
                             if (clientList.size() < 1) {
                                 Toast.makeText(getActivity(), "You are not registered to any clients that meet these criteria", Toast.LENGTH_SHORT).show();
                             } else {
-                                Holder holder = Holder.getInstance();
-                                holder.setClients(clientList);
+                                Holder.setClients(clientList);
                                 final FragmentTransaction transaction = getFragmentManager().beginTransaction();
                                 transaction.replace(R.id.fragment_container, results)
                                         .addToBackStack(null)

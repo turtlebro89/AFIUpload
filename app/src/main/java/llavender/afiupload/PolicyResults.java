@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class PolicyResults extends Fragment {
 
 
-    private ArrayList policies;
+    private ArrayList<ParseObject> policies;
 
 
 
@@ -42,8 +42,7 @@ public class PolicyResults extends Fragment {
         //Wire up the widgets
         TextView policyFoundText = (TextView) view.findViewById(R.id.policyFoundView);
         ListView policyListView = (ListView) view.findViewById(R.id.listOfPolicies);
-        final Holder holder = Holder.getInstance();
-        policies = holder.getPolicies();
+        policies = Holder.getPolicies();
 
         //set the text for # of policies found
         policyFoundText.setText(policies.size() + "policie(s) found");
@@ -55,7 +54,7 @@ public class PolicyResults extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                holder.setPolicy((ParseObject)policies.get(position));
+                Holder.setPolicy(policies.get(position));
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
@@ -101,10 +100,10 @@ public class PolicyResults extends Fragment {
         /**
          * Creates a custom view for our list View and populates the data
          *
-         * @param position
-         * @param convertView
-         * @param parent
-         * @return
+         * @param position position in the ListView
+         * @param convertView the view to be inflated
+         * @param parent the parent view
+         * @return the view created
          */
         public View getView(int position, View convertView, ViewGroup parent) {
             View view = convertView;

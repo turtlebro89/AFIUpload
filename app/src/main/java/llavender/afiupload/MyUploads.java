@@ -57,11 +57,9 @@ public class MyUploads extends Fragment {
         ListView imageInfo = (ListView) view.findViewById(R.id.listOfUploads);
         TextView numberOfImages = (TextView) view.findViewById(R.id.imageNumberView);
         Button saveButton = (Button) view.findViewById(R.id.updateButton);
-        //Get Static class
-        final Holder holder = Holder.getInstance();
-        holder.setCommentsList(new ArrayList<String>());
+        Holder.setCommentsList(new ArrayList<String>());
         //create list of Images
-        final ArrayList<Uri> images = holder.getImages();
+        final ArrayList<Uri> images = Holder.getImages();
         //Create Custom adapter
         ObjectArrayAdapter adapter = new ObjectArrayAdapter(getActivity(), R.layout.my_uploads_list_layout, images);
         //Set the list adapter
@@ -85,9 +83,9 @@ public class MyUploads extends Fragment {
 
                         ParseObject photoUpload = new ParseObject("Photos");
                         photoUpload.put("AgentID", currentUser.getObjectId());
-                        photoUpload.put("Comment", holder.getCommentsList().get(i));
+                        photoUpload.put("Comment", Holder.getCommentsList().get(i));
                         photoUpload.put("Photo", image);
-                        photoUpload.put("Policy", (holder.getPolicy()).getObjectId());
+                        photoUpload.put("Policy", (Holder.getPolicy()).getObjectId());
                         photoUpload.saveInBackground();
 
                     } catch(FileNotFoundException e) {
@@ -146,7 +144,6 @@ public class MyUploads extends Fragment {
          */
         public View getView(final int position, View convertView, ViewGroup parent) {
             View view = convertView;
-            final Holder holder = Holder.getInstance();
             final ViewHolder vHolder;
 
             /**
@@ -171,8 +168,8 @@ public class MyUploads extends Fragment {
 
             vHolder.index = position;
 
-            if(position >= holder.getCommentsList().size()){
-                holder.getCommentsList().add("");
+            if(position >= Holder.getCommentsList().size()){
+                Holder.getCommentsList().add("");
             }
 
             /**
@@ -188,12 +185,12 @@ public class MyUploads extends Fragment {
                     Picasso.with(getContext()).load(imageUri).fit().centerInside().into(vHolder.imageToUpload);
                 }
                 if (vHolder.commentsText != null) {
-                    Log.d("Comment", String.valueOf(position) + ":" + holder.getCommentsList().get(position));
-                    vHolder.commentsText.setText(holder.getCommentsList().get(position));
+                    Log.d("Comment", String.valueOf(position) + ":" + Holder.getCommentsList().get(position));
+                    vHolder.commentsText.setText(Holder.getCommentsList().get(position));
                 }
             }
 
-            vHolder.commentsText.setText(holder.getCommentsList().get(position));
+            vHolder.commentsText.setText(Holder.getCommentsList().get(position));
             vHolder.commentsText.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -207,7 +204,7 @@ public class MyUploads extends Fragment {
 
                     @Override
                     public void afterTextChanged(Editable s) {
-                        holder.putInCommentsList(s.toString(), (Integer)vHolder.index);
+                        Holder.putInCommentsList(s.toString(), vHolder.index);
                     }
                 });
 

@@ -23,8 +23,6 @@ import java.util.ArrayList;
  */
 public class ConfirmChanges extends Fragment {
 
-    private Holder holder;
-
     public ConfirmChanges() {
         // Required empty public constructor
     }
@@ -38,15 +36,14 @@ public class ConfirmChanges extends Fragment {
 
         Button updateButton = (Button) view.findViewById(R.id.commitButton);
         TextView confirmDetailsText = (TextView) view.findViewById(R.id.detailsText);
-        holder = Holder.getInstance();
-        final ArrayList<String> commentsList = holder.getCommentsList();
+        final ArrayList<String> commentsList = Holder.getCommentsList();
         confirmDetailsText.setText("Would you like to commit these changes?");
 
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                ArrayList<ParseObject> parseObjects = holder.getParseObjects();
+                ArrayList<ParseObject> parseObjects = Holder.getParseObjects();
 
                 for(int i = 0; commentsList.size() > i; i++) {
 

@@ -16,8 +16,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity {
 
-    private Holder holder = Holder.getInstance();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,7 +98,7 @@ public class MainActivity extends ActionBarActivity {
                 images.add(targetUri);
             }
             MyUploads uploads = new MyUploads();
-            holder.setImages(images);
+            Holder.setImages(images);
 
             final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment_container, uploads).commit();

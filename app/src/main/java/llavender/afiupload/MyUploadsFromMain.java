@@ -57,7 +57,6 @@ public class MyUploadsFromMain extends Fragment implements ConfirmDeleteDialogFr
         saveButton = (Button) view.findViewById(R.id.updateButton);
         ParseUser currentUser = ParseUser.getCurrentUser();
         final ArrayList<String> commentsList = new ArrayList<>();
-        final Holder holder = Holder.getInstance();
         comments = new ArrayList<>();
         parseObjects = new ArrayList<>();
         imageUrls = new ArrayList<>();
@@ -79,9 +78,9 @@ public class MyUploadsFromMain extends Fragment implements ConfirmDeleteDialogFr
                         adapter = new ObjectArrayAdapter(getActivity(), R.layout.my_uploads_list_layout, imageUrls);
                         imageInfo.setAdapter(adapter);
                     }
-                    holder.setParseObjects(parseObjects);
-                    holder.setComments(comments);
-                    holder.setImageUrls(imageUrls);
+                    Holder.setParseObjects(parseObjects);
+                    Holder.setComments(comments);
+                    Holder.setImageUrls(imageUrls);
 
 
                     saveButton.setOnClickListener(new View.OnClickListener() {
@@ -92,9 +91,9 @@ public class MyUploadsFromMain extends Fragment implements ConfirmDeleteDialogFr
                                 commentsList.add(comments.get(i));
                             }
 
-                            holder.setCommentsList(commentsList);
-                            holder.setParseObjects(parseObjects);
-                            holder.setImageUrls(imageUrls);
+                            Holder.setCommentsList(commentsList);
+                            Holder.setParseObjects(parseObjects);
+                            Holder.setImageUrls(imageUrls);
 
 
                             getFragmentManager().beginTransaction().replace(R.id.fragment_container, new ConfirmChanges())
@@ -239,7 +238,7 @@ public class MyUploadsFromMain extends Fragment implements ConfirmDeleteDialogFr
 
                         @Override
                         public void afterTextChanged(Editable s) {
-                            holder.putInComments(s.toString(),vHolder.index);
+                            Holder.putInComments(s.toString(),vHolder.index);
                         }
                     });
                 }

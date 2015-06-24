@@ -47,13 +47,11 @@ public class ContactResults extends Fragment {
         //wire up widgets
         TextView contactsFound = (TextView) view.findViewById(R.id.contactFoundView);
         ListView contacts = (ListView) view.findViewById(R.id.listOfContacts);
-        //Get holder class
-        final Holder holder = Holder.getInstance();
 
         results = new PolicyResults();
 
         //populate global variables
-        availableContacts = holder.getClients();
+        availableContacts = Holder.getClients();
 
         ObjectArrayAdapter adapter = new ObjectArrayAdapter(getActivity(), R.layout.display_clients_layout, availableContacts);
 
@@ -79,7 +77,7 @@ public class ContactResults extends Fragment {
                             } else {
                                 // set the global variable
                                 policies = (ArrayList<ParseObject>) list;
-                                holder.setPolicies(policies);
+                                Holder.setPolicies(policies);
                                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, results)
                                         .addToBackStack(null)
                                         .commit();
