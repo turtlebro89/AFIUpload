@@ -1,0 +1,33 @@
+<LinearLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/amfam">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:gravity="bottom">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upload Photos"
+            android:id="@+id/newUploadBtn"
+            android:layout_gravity="bottom"
+            android:clickable="true" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="My Uploads"
+            android:id="@+id/myUploadsBtn"
+            android:layout_gravity="bottom"
+            android:clickable="true" />
+    </LinearLayout>
+
+</LinearLayout>

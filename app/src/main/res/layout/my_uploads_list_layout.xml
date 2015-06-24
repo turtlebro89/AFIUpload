@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:longClickable="true">
+
+        <ImageView
+            android:layout_width="176dp"
+            android:layout_height="176dp"
+            android:id="@+id/imageToUpload"
+            android:clickable="true"
+            android:longClickable="true"/>
+
+        <MultiAutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="176dp"
+            android:id="@+id/CommentsText"
+            android:hint="Comments"
+            android:layout_gravity="right"
+            android:longClickable="true"/>
+    </LinearLayout>
+
+</LinearLayout>
