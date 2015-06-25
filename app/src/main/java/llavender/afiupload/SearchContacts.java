@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -35,7 +33,9 @@ public class SearchContacts extends Fragment {
     private EditText cityView;
     private EditText zipCode;
     private Spinner stateSpinner;
-    private ArrayList<ParseObject> clientList;
+    private Button searchButton;
+    private ArrayAdapter<String> adapter;
+    private ArrayList clientList;
     ContactResults results;
 
     public SearchContacts() {
@@ -53,12 +53,12 @@ public class SearchContacts extends Fragment {
         cityView = (EditText) view.findViewById(R.id.cityView);
         zipCode = (EditText) view.findViewById(R.id.zipCodeView);
         stateSpinner = (Spinner) view.findViewById(R.id.stateSpinner);
-        Button searchButton = (Button) view.findViewById(R.id.searchBtn);
-        clientList = new ArrayList<>();
+        searchButton = (Button) view.findViewById(R.id.searchBtn);
+        clientList = new ArrayList();
         results = new ContactResults();
 
                 //create the spinner adapter
-        ArrayAdapter adapter = new ArrayAdapter<>(getActivity(), R.layout.support_simple_spinner_dropdown_item, getResources().getStringArray(R.array.states));
+        adapter = new ArrayAdapter<>(getActivity(), R.layout.support_simple_spinner_dropdown_item, getResources().getStringArray(R.array.states));
         //set the spinner adapter
         stateSpinner.setAdapter(adapter);
 
@@ -111,17 +111,6 @@ public class SearchContacts extends Fragment {
                 }
             }
         });
-
-        //enable the Action Bar
-        setHasOptionsMenu(true);
-
         return view;
     }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        menu.clear();
-        inflater.inflate(R.menu.menu_main, menu);
-    }
-
 }

@@ -20,12 +20,37 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        boolean hasRun = false;
 
-        Parse.enableLocalDatastore(this);
-        Parse.initialize(this, "JFiVPwvdrJ1Td0A327bgWst4x0NK5ubWHTkZltqM", "zmjyhmO4MuNbbnRYWqR4eqgyZKdwyp2bfX1jLt9f");
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
+
+        if (Intent.ACTION_SEND.equals(action) && type != null) {
+            if ("text/plain".equals(type)) {
+                Toast.makeText(this, "Cannot Share Text", Toast.LENGTH_SHORT).show();
+            } else if (type.startsWith("image/")) {
+                Uri imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
+                Holder.getImages().add(imageUri);
+                hasRun = true;
+            }
+        } else if (Intent.ACTION_SEND_MULTIPLE.equals(action) && type != null) {
+            if (type.startsWith("image/")) {
+                ArrayList<Uri> imageUris = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+                Holder.getImages().addAll(imageUris);
+                hasRun = true;
+            }
+        }
+
+        if(!hasRun) {
+            Parse.enableLocalDatastore(this);
+            Parse.initialize(this, "JFiVPwvdrJ1Td0A327bgWst4x0NK5ubWHTkZltqM", "zmjyhmO4MuNbbnRYWqR4eqgyZKdwyp2bfX1jLt9f");
+        }
 
         //if there is a user logged into the app already start the main fragment
         ParseUser currentUser = ParseUser.getCurrentUser();
+
+
         if (currentUser != null) {
             // do stuff with the user
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MainFragment()).addToBackStack(null).commit();
@@ -98,7 +123,12 @@ public class MainActivity extends ActionBarActivity {
                 images.add(targetUri);
             }
             MyUploads uploads = new MyUploads();
-            Holder.setImages(images);
+
+            if(Holder.getImages().size() > 0){
+                Holder.addImages(images);
+            } else {
+                Holder.setImages(images);
+            }
 
             final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment_container, uploads).commit();
@@ -107,6 +137,8 @@ public class MainActivity extends ActionBarActivity {
             Toast.makeText(this, "You did not select any photos", Toast.LENGTH_SHORT).show();
         }
     }
+
+
 
 
 }

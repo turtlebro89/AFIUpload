@@ -78,13 +78,13 @@
             android:text="State"
             android:id="@+id/textView5" />
 
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/stateSpinner"
-            android:layout_gravity="center_horizontal"
-            android:clickable="true" />
     </LinearLayout>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/stateSpinner"
+        android:clickable="true" />
 
     <LinearLayout
         android:orientation="horizontal"

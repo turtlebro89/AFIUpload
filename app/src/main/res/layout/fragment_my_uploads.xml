@@ -13,15 +13,6 @@
         android:id="@+id/imageNumberView"
         android:layout_gravity="center_horizontal" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="41dp"
-        android:text="Total size of Uploads: "
-        android:id="@+id/sizeOfImages"
-        android:layout_gravity="center_horizontal"
-        android:gravity="bottom"
-        android:paddingBottom="10dp" />
-
     <ListView
         android:layout_width="match_parent"
         android:layout_height="374dp"

@@ -58,12 +58,19 @@ public class PolicyResults extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Holder.setPolicy(policies.get(position));
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(intent.createChooser(intent, "Select Pictures"), 2);
 
+                if(!Holder.getImages().isEmpty()){
+                    getFragmentManager().beginTransaction().replace(R.id.fragment_container, new MyUploads())
+                            .addToBackStack(null)
+                            .commit();
+                } else {
+
+                    Intent intent = new Intent();
+                    intent.setType("image/*");
+                    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    startActivityForResult(intent.createChooser(intent, "Select Pictures"), 2);
+                }
             }
         });
 

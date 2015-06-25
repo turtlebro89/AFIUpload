@@ -13,14 +13,14 @@ import java.util.ArrayList;
 public class Holder {
 
     private static Holder holder = null;
-    private static ArrayList<ParseObject> clients;
-    private static ArrayList<ParseObject> policies;
+    private static ArrayList<ParseObject> clients = new ArrayList<>();
+    private static ArrayList<ParseObject> policies = new ArrayList<>();;
     private static ParseObject policy;
-    private static ArrayList<Uri> images;
-    private static ArrayList<String> comments;
-    private static ArrayList<ParseObject> parseObjects;
-    private static ArrayList<String> imageUrls;
-    private static ArrayList<String> commentsList;
+    private static ArrayList<Uri> images = new ArrayList<>();;
+    private static ArrayList<String> comments = new ArrayList<>();;
+    private static ArrayList<ParseObject> parseObjects = new ArrayList<>();;
+    private static ArrayList<String> imageUrls = new ArrayList<>();;
+    private static ArrayList<String> commentsList = new ArrayList<>();;
 
 
     protected Holder(){    }
@@ -62,6 +62,10 @@ public class Holder {
 
     public static void setImages(ArrayList<Uri> images) {
         Holder.images = images;
+    }
+
+    public static void addImages(ArrayList<Uri> images) {
+        Holder.images.addAll(images);
     }
 
     public static ArrayList<ParseObject> getParseObjects() {

@@ -1,17 +1,20 @@
 package llavender.afiupload;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -37,16 +40,9 @@ import java.util.ArrayList;
  */
 public class MyUploads extends Fragment {
 
-
-
-
-
-
-
     public MyUploads() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -110,7 +106,34 @@ public class MyUploads extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear();
-        inflater.inflate(R.menu.menu_main, menu);
+        inflater.inflate(R.menu.menu_main2, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        switch(id){
+            case R.id.action_logout :
+                //logout the parseUser
+                ParseUser.logOut();
+                //Restart the Login fragment
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, new LoginFragment())
+                        .addToBackStack(null)
+                        .commit();
+                break;
+            case R.id.action_add_photo :
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent.createChooser(intent, "Select Pictures"), 2);
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public class ObjectArrayAdapter extends ArrayAdapter<Uri> {
@@ -192,21 +215,21 @@ public class MyUploads extends Fragment {
 
             vHolder.commentsText.setText(Holder.getCommentsList().get(position));
             vHolder.commentsText.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                    }
+                }
 
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                    }
+                }
 
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                        Holder.putInCommentsList(s.toString(), vHolder.index);
-                    }
-                });
+                @Override
+                public void afterTextChanged(Editable s) {
+                    Holder.putInCommentsList(s.toString(), vHolder.index);
+                }
+            });
 
 
 
