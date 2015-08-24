@@ -199,7 +199,6 @@ public class MyUploadsFromMain extends Fragment implements ConfirmDeleteDialogFr
                 vHolder = new ViewHolder();
                 LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 view = inflater.inflate(R.layout.my_uploads_list_layout, null);
-//                view.setTag(position);
                 vHolder.commentsText = (MultiAutoCompleteTextView) view.findViewById(R.id.CommentsText);
                 vHolder.imageToUpload = (ImageView) view.findViewById(R.id.imageToUpload);
 

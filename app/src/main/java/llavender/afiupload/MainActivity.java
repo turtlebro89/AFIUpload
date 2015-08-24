@@ -69,7 +69,6 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -137,9 +136,5 @@ public class MainActivity extends ActionBarActivity {
             Toast.makeText(this, "You did not select any photos", Toast.LENGTH_SHORT).show();
         }
     }
-
-
-
-
 }
 
